@@ -229,27 +229,15 @@ public class SpellingBeeSolver extends javax.swing.JFrame {
         }
         else return null;
     }
-    /**
-     * Takes in an empty map of any data structure and the original file and builds a map
-     * @param map
-     * @param file
-     * @return Map of all words in the file
-     * @throws IOException
-     */
+    
     public static Map<String, List<String>> getMap(Map<String, List<String>> map, String file) throws IOException {
         BufferedReader dictionary = null;
-        // Found documentation for BufferedReader
-        // https://docs.oracle.com/javase/8/docs/api/java/io/BufferedReader.html
-        // Tries opening the file, catches an exception to print the error message
         try {
             dictionary  = new BufferedReader(new FileReader(file));
         } catch (FileNotFoundException e) {
             System.exit(1);
         }
         while(dictionary.ready()){
-            //Reads a line, sorts it, and checks if it is in the AVL Tree
-            //If its anagram is there, it appends it to the linked list
-            //If not, it creates a linked list and inserts the anagram key and the linked list into the AVL Tree
             try{
                 String x = dictionary.readLine();
                 String y = String.copyValueOf(insertionSort(x));
